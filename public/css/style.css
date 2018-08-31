@@ -21,7 +21,7 @@ html,body{
 }
 #workspace{
 	margin-left: 182px; 
-	margin-right:250px;
+	margin-right:252px;
 	background: rgb(60,63,65); 
 	height: 100%;
 }
@@ -53,6 +53,25 @@ html,body{
     background: #FFFFFF;
     font:10px;
 }
+#file_list{
+    text-indent:40px;
+}
+.fileSelected{
+    margin:3px 0 3px 0;
+    background:rgb(47, 101, 202);
+    color:rgb(255, 255, 255);
+    height:20px;
+
+}
+
+.fileUnselected{
+    height:20px;
+    margin:3px 0 3px 0;
+    color:rgb(185, 92, 80);
+
+}
+
+
 
 #op{
 	position: absolute;
@@ -62,8 +81,8 @@ html,body{
     bottom: 0;
 	background: rgb(60,63,65);
     border-style:solid;
-    border-width: 0px 0px 0px 1px;
-    border-color: rgb(230,230,230)  rgb(230,230,230) rgb(230,230,230) rgb(80,80,80);
+    border-width: 0px 0px 0px 2px;
+    border-left-color: rgb(40,40,40);
      
 }
 #editor{
@@ -85,15 +104,38 @@ html,body{
 }
 
 
+.LabelSelected{
+    height:17px;
+    width:80px;
+    background: rgb(81, 86, 88);
+    border-style:solid;
+    border-width: 0px 0px 3px 0px;
+    border-bottom-color: rgb(67,158,184);
+    display: inline-block; 
+    margin:0;
+    padding:0;
 
-#ws.tab    	
-{height:35px;
-	width:60px;
-    bottom:0;
-	background: rgb(39,40,34);
+}
+
+.LabelUnselected{
+    width:80px;
+    height:17px;
+    display: inline-block; 
+    background: rgb(60, 62, 63);
     margin:0;
     padding:0;
     border:0;
+}
+
+#ws_tab    	
+{
+    color:rgb(134,162,171);
+    height:20px;
+    border-style:solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: rgb(75,75,75);
+	background: rgb(60,62,63);
+
 }
 /*body{
     background: #000000

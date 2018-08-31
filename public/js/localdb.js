@@ -14,18 +14,21 @@ function getStorageList(){
 
 Vue.use(LiquorTree);
 	
-var fp = new Vue({
+var filelabel = new Vue({
     el:'#ws_tab',
     data:{
-         labelList:[]
+         labelList:[],
+         focus:''
     },
     methods:{
 
         clickLabel(e){
             console.log(e);
+            console.log(filetree.focus)
             if (e!=filetree.focus){
                 filetree.focus = e;
                 editor.setValue(getItem(e),-1);
+                this.focus = e;
             }
         }
     }
@@ -57,19 +60,6 @@ var filetree = new Vue({
       	
  	},
  	created: function () {
-        /*
-    	console.log(localStorage);
-    	//localStorage.clear();
-    	if (localStorage.length == 0 ){
-	    	var File = [{ text: 'hello.cpp'}];
-	    	
-	    	insertItem('folderTree', JSON.stringify(File));
-	    	insertItem('hello.cpp', "#include.....");
-    	}
-        this.initTree();
-        
-    	//console.log(this.treeData);
-        */
         
         if (localStorage.length == 0 ){
             var File = [{ text: 'hello.cpp'}];
@@ -81,36 +71,16 @@ var filetree = new Vue({
 
   	},
  	methods:{
-        /*
- 		onNodeSelected(node) { 
- 			//console.log(editor.getValue(),this.focus); 
- 			//insertItem(this.focus, editor.getValue());	
-            console.log("before",editor);
-    		if (fp.labelList.indexOf(node.text)== -1) //不存在
-    		{
-    			//console.log(editor.getValue());
-    			fp.labelList.push(node.text);
-            }
-    		this.focus = node.text;
-            editor.setValue(getItem(node.text),-1);
-    		//editor.setValue(getItem(node.text));
-            console.log("after",editor);
-    		return getItem(node.text);
-    		//this.storage();
-
-    		//this.content = this.getData(node.type);
-    		//console.log(this.content);
-    	},
-        */
         onFileSelected(name){
             console.log(name);
-            if (fp.labelList.indexOf(name)== -1) //不存在
+            if (filelabel.labelList.indexOf(name)== -1) //不存在
             {
                 //console.log(editor.getValue());
-                fp.labelList.push(name);
+                filelabel.labelList.push(name);
             }
             this.focus = name;
             editor.setValue(getItem(name),-1);
+            filelabel.focus = name;
             return getItem(name);
         },
     	initTree(){
@@ -123,9 +93,10 @@ var filetree = new Vue({
             if (this.treeData.length>0){
                 var t = this.treeData[0].text;
 
-                fp.labelList.push(t);
+                filelabel.labelList.push(t);
                 this.focus = t;
-                editor.setValue(getItem(t),-1)
+                editor.setValue(getItem(t),-1);
+                filelabel.focus = t;
 
                 //console.log(this.treeData[0]);
             }
