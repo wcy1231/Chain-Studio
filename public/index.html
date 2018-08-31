@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Chain Studio</title>
+
+
+<script src="https://cdn.jsdelivr.net/npm/liquor-tree/dist/liquor-tree.umd.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.6/lib/eos.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ext-language_tools.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel ="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<div id="header">
+            
+</div>
+
+<div id="container">
+        
+		<div id="ft">
+			<div id="file_op">
+                <button v-on:click="createNewFile"> + </button>
+            </div>
+			
+			<div v-if="seen"> 
+				<input v-model="newfileName">
+				<button v-on:click="confirmFileName">confirm</button>
+				<button v-on:click="cancelCreateFile">cancel</button>
+			</div>
+            <div >
+                <div v-for="data in treeData">
+                    <button v-on:click="onFileSelected(data['text'])">
+                    {{data['text']}}
+                    </button>
+                </div>
+                
+            </div>
+            <!--
+			<tree
+                id="file_tree"
+		      :data="treeData"
+		      :option="treeOptions"
+		      @node:selected="onNodeSelected"
+		    />
+            -->
+
+		</div>
+
+		<div id="workspace" >
+			<div id="ws_tab">
+				<button id="file_label"  v-for="label in labelList" v-on:click="clickLabel(label)">{{label}}</button>
+			</div>
+			<div id="editor">
+			</div>
+
+			<div id="terminal">
+			
+			</div>
+		</div>
+		
+
+		<div id="op">
+			operation zone
+			<br>
+			<button onclick="get_identity()">授权</button>
+			<br>
+			<button onclick="compile_code()">compile</button>
+    		<button onclick="deploy_code()">deploy</button>
+    		<button onclick="run_code()">run</button>
+		</div>	
+
+
+</div>
+
+
+
+<script src="js/editor.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/localdb.js"></script>
+
+<script src="js/operation.js"></script>
+<script src="js/api_eos.js"></script>
+
+
+<script> 
+         
+editor.session.on('change', function(delta) {
+    // delta.start, delta.end, delta.lines, delta.action
+        insertItem(filetree.focus, editor.getValue());
+    });
+ 
+
+</script>
+
+</body>
+</html>

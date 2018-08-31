@@ -1,0 +1,100 @@
+html,body{
+	height:auto;
+    width:auto;
+    margin:0px;
+    padding: 0px;
+    border: 0px;
+}
+#header{
+    top:0;
+    width:100%;
+    height:25px;
+    background: rgb(60,63,65);
+    border-style:solid;
+    border-width: 0px 0px 1px 0px;
+    border-bottom-color: rgb(75,75,75);
+}
+#container{
+    
+    width:100%;
+    height:100%;
+}
+#workspace{
+	margin-left: 182px; 
+	margin-right:250px;
+	background: rgb(60,63,65); 
+	height: 100%;
+}
+
+
+
+
+#ft{
+
+     background: rgb(60,63,65);
+     border-style:solid;
+     border-width: 0px 2px 0px 0px;
+     border-right-color: rgb(40,40,40) ;
+     position: absolute;
+     width:180px;
+     left:0;
+     top: 26px;
+     bottom: 0;
+}
+
+#file_op{
+    height: 25px;
+    background: rgb(57,60,62);
+    border-style:solid;
+    border-width: 0px 0px 1px 0px;
+    border-bottom-color: rgb(36,38,39);
+}
+#file_tree{
+    background: #FFFFFF;
+    font:10px;
+}
+
+#op{
+	position: absolute;
+	width:250px;
+	right:0;
+    top:26px;
+    bottom: 0;
+	background: rgb(60,63,65);
+    border-style:solid;
+    border-width: 0px 0px 0px 1px;
+    border-color: rgb(230,230,230)  rgb(230,230,230) rgb(230,230,230) rgb(80,80,80);
+     
+}
+#editor{
+    height:500px;
+}
+#terminal{
+    border-style:solid;
+    border-width: 1px 0px 0px 0px;
+    border-top-color: rgb(60,61,56);
+    height:100%;
+}
+
+#createNewFile{
+	position: absolute;
+	width:100px;
+	height:80px;
+	top bottom left right:auto,auto,auto,auto;
+	background: rgb(60,63,65);
+}
+
+
+
+#ws.tab    	
+{height:35px;
+	width:60px;
+    bottom:0;
+	background: rgb(39,40,34);
+    margin:0;
+    padding:0;
+    border:0;
+}
+/*body{
+    background: #000000
+}*/
