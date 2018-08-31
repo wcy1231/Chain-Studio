@@ -19,6 +19,10 @@
 <body>
 
 <div id="header">
+	<div id = "compile_deploy">
+		<button onclick="compile_code()">compile</button>
+    	<button onclick="deploy_code()">deploy</button>
+    </div>
             
 </div>
 
@@ -67,25 +71,42 @@
 		
 
 		<div id="op">
-			operation zone
 			<br>
-			<button onclick="get_identity()">授权</button>
+			<button onclick="get_identity">授权</button>
 			<br>
-			<button onclick="compile_code()">compile</button>
-    		<button onclick="deploy_code()">deploy</button>
-    		<button onclick="run_code()">run</button>
+
+			<div id="run_contract">
+				<div class="op_item">
+				  <input v-model="contract_name" placeholder="Load contract">
+				  <button @click="submit_contract">At Contract</button>
+				</div>
+
+				<div class="op_item">
+				    <div v-for="func in func_list">
+				        {{func.name}}:
+				        <div>
+				            <div v-for="(field, index) in func.fields">
+				                {{field.name}}: <input :placeholder="field.type" v-model="field.input">
+				            </div>
+				            
+				        </div>
+				        <button @click="exec_func(func.name,func.fields)">Exec</button>
+				    </div>
+
+				</div>
+
+			</div>
+
+
 		</div>	
-
-
 </div>
 
 
 
+<script src="js/operation.js"></script>
 <script src="js/editor.js"></script>
 <script src="js/terminal.js"></script>
 <script src="js/localdb.js"></script>
-
-<script src="js/operation.js"></script>
 <script src="js/api_eos.js"></script>
 
 

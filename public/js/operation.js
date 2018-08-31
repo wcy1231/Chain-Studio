@@ -44,3 +44,40 @@ function deploy_code() {
         term.writeln('error:'+err['error']['what'])
     })
 }
+
+
+new Vue({
+  el: '#run_contract',
+  data: {
+    contract_name: 'eosjunglewcy',
+    func_list:{}
+  },
+  methods: {
+    submit_contract(){
+        eos.getAbi(this.contract_name).then(rsp =>{
+            this.func_list = rsp.abi.structs
+        })
+    },
+    exec_func(name, fields){
+        console.log(name,fields)
+        var param={}
+        for (idx in fields) {
+            var field = fields[idx]
+            param[field.name]=field.input
+        }
+
+        console.log(param)
+        eos.transaction(this.contract_name, contract => {
+            contract[name](param,{authorization:[user_account.name]})
+        }).then(rsp =>{
+            console.log(rsp)
+            term.writeln('tid:'+rsp.transaction_id)
+        }).catch(err=>{
+            console.log(err)
+            //err=JSON.parse(err)
+            //term.writeln('error:'+err['error']['what'])
+        })
+    }
+  }
+
+})
