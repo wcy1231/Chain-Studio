@@ -49,7 +49,7 @@ function deploy_code() {
 new Vue({
   el: '#run_contract',
   data: {
-    contract_name: 'eosjunglewcy',
+    contract_name: 'eosio',
     func_list:{}
   },
   methods: {
@@ -77,6 +77,10 @@ new Vue({
             //err=JSON.parse(err)
             //term.writeln('error:'+err['error']['what'])
         })
+    },
+    is_func_list_empty(){
+        console.log(JSON.stringify(this.func_list)=="{}");
+        return (JSON.stringify(this.func_list)=="{}")
     }
   }
 

@@ -30,7 +30,7 @@
         
 		<div id="ft">
 			<div id="file_op">
-                <button v-on:click="createNewFile"> + </button>
+				<input type="image" src="./image/newfile.jpg" style="width: 20px; height:20px; margin-left:20px" v-on:click="createNewFile"/>
             </div>
 			
 			<div v-if="seen"> 
@@ -40,9 +40,14 @@
 			</div>
             <div id="file_list">
                 <div v-for="data in treeData">
-                    <p  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }">
-                    {{data['text']}}
-                    </p>
+                    <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }" v-on:onmousedown="show($event)">
+                    	<div style="margin:auto auto auto auto;">
+                    		<div>
+	                    		<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
+	                    		{{data['text']}}
+                    		</div>
+                    	</div>
+                    </div>
                 </div>
                 
             </div>
@@ -59,7 +64,13 @@
 
 		<div id="workspace" >
 			<div id="ws_tab">
-				<p v-for="label in labelList" v-on:click="clickLabel(label)" v-bind:class="{ LabelSelected: (label==focus),LabelUnselected:(label!=focus) }">{{label}}<p>
+				<div v-for="label in labelList" v-on:click="clickLabel(label)" v-bind:class="{ LabelSelected: (label==focus),LabelUnselected:(label!=focus) }" >
+					<div style="display: flex; position:relative;">
+						<div style="margin:auto auto auto auto; ">{{label}}</div>
+						<input type="image" src="./image/file.jpg" style="width: 10px; height:10px; position:absolute; right:3px; top:5px;" v-on:click="clickCancel(label,$event)" />
+					</div>
+					
+				</div>
 			</div>
 			<div id="editor">
 			</div>
@@ -72,25 +83,26 @@
 
 		<div id="op">
 			<br>
-			<button onclick="get_identity">授权</button>
+			<button class="authorization" onclick="get_identity">授权</button>
 			<br>
-
 			<div id="run_contract">
-				<div class="op_item">
-				  <input v-model="contract_name" placeholder="Load contract">
-				  <button @click="submit_contract">At Contract</button>
+				<div class="ops">
+				  <input class="contract_addr" v-model="contract_name" placeholder="Load contract">
+				  <button class="call" @click="submit_contract">At Contract</button>
 				</div>
 
-				<div class="op_item">
-				    <div v-for="func in func_list">
-				        {{func.name}}:
+				<div class="ops" v-if="!is_func_list_empty()">
+				    <div class="op_action" v-for="func in func_list">
+				        <div class="action_name"> {{func.name}}</div>
 				        <div>
-				            <div v-for="(field, index) in func.fields">
-				                {{field.name}}: <input :placeholder="field.type" v-model="field.input">
+				            <div class="paras" v-for="(field, index) in func.fields">
+				                <a class="para_name">{{field.name}}: </a>
+				                <input class="para_input" :placeholder="field.type" v-model="field.input">
 				            </div>
 				            
 				        </div>
-				        <button @click="exec_func(func.name,func.fields)">Exec</button>
+				        <div style="height:40px"></div>
+				        <button class="action_excute" @click="exec_func(func.name,func.fields)">Exec</button>
 				    </div>
 
 				</div>

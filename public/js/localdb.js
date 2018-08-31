@@ -22,15 +22,40 @@ var filelabel = new Vue({
     },
     methods:{
 
-        clickLabel(e){
-            console.log(e);
-            console.log(filetree.focus)
-            if (e!=filetree.focus){
-                filetree.focus = e;
-                editor.setValue(getItem(e),-1);
-                this.focus = e;
+        clickLabel(name){
+            if (name!=filetree.focus){
+                console.log("in");
+                filetree.focus = name;
+                editor.setValue(getItem(name),-1);
+                this.focus = name;
             }
-        }
+        },
+        clickCancel(label,event){
+            //filetree.focus = name;
+            var len = this.labelList.length;
+            
+            if (len==1){
+                this.focus = '';
+                this.labelList = [];
+                filetree.focus = '';
+            }
+            else{
+                if (label == this.focus){
+                    this.labelList.splice(len-1,1);
+                    this.clickLabel(this.labelList[len-2]);
+                }
+                else{
+
+                    var index = this.labelList.indexOf(label);
+                    if (index != -1){
+                        this.labelList.splice(index,1);
+                    }
+                }         
+            }      
+                 
+            event.stopPropagation();
+        },
+
     }
 })
 
@@ -115,7 +140,11 @@ var filetree = new Vue({
     	},
     	cancelCreateFile(){
     		this.seen = false;
-    	}
+    	},
+        show(event){
+
+            console.log(event)
+        }
  	}
 });
    
