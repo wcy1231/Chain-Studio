@@ -1,4 +1,3 @@
-	function get_identity(){
 		document.addEventListener('scatterLoaded', scatterExtension => {
         const scatter = window.scatter;
         //console.log(window.scatter);
@@ -8,8 +7,8 @@
         const eosNetwork = {
 	        protocol: "http",
 	        blockchain: 'eos',
-	        host: 'api-mainnet.starteos.io',//'127.0.0.1', // ( or null if endorsed chainId )
-	        port: 80, // ( or null if defaulting to 80 )
+	        host: 'api-mainnet.starteos.io',
+	        port: 80, 
 	        chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
 	    }
 
@@ -21,7 +20,7 @@
             chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca'
         }
 
-        scatter.getIdentity({accounts: [eosNetwork]}).then(identity => {
+        scatter.getIdentity({accounts: [eosJungleNetwork]}).then(identity => {
                     const account = identity.accounts.find(acc => acc.blockchain === 'eos');
                     window.user_account = account
 
@@ -30,8 +29,7 @@
                 });
 
         const eosOptions = {}
-        const eos = scatter.eos(eosNetwork, Eos, eosOptions);
+        const eos = scatter.eos(eosJungleNetwork, Eos, eosOptions);
         window.eos = eos
 
     })
-	}

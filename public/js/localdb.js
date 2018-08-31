@@ -31,15 +31,7 @@ var fp = new Vue({
     }
 })
 
-var op = new Vue({
-    el:'#op',
-    data:{
 
-    },
-    methods:{
-    
-    }
-})    
 
 //console.log(LiquorTree);
 var filetree = new Vue({
