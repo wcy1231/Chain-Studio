@@ -6,13 +6,10 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/liquor-tree/dist/liquor-tree.umd.js"></script>
-<link rel="stylesheet" href="./node_modules/xterm/dist/xterm.css" />
-<script src="./node_modules/xterm/dist/xterm.js"></script>
-<script src="./node_modules/xterm/dist/addons/fit/fit.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.6/lib/eos.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ext-language_tools.js"></script>
+<script src="ace.js"></script>
+<script src="ext-language_tools.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <link rel ="stylesheet" href="./css/style.css">
@@ -21,14 +18,14 @@
 
 
 <div id="container">
-        
+
 		<div id="ft">
 			<div id="file_op">
 				<input type="image" src="./image/newfile.jpg" style="width: 20px; height:20px; margin-left:20px" v-on:click="createNewFile"/>
             </div>
 			<!--
-			<div v-if="seen"> 
-				<label>Please input your file name</label>	
+			<div v-if="seen">
+				<label>Please input your file name</label>
 				<input v-model="newfileName">
 				<button v-on:click="confirmFileName">confirm</button>
 				<button v-on:click="cancelCreateFile">cancel</button>
@@ -38,23 +35,23 @@
                 <div v-for="data in treeData">
                     <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }">
                     	<div style="margin:auto auto auto auto;">
-                    		
+
 	                    	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
 	                    	{{data['text']}}
-	                    	
-	                    		
 
-                    		
+
+
+
                     	</div>
                     </div>
                 </div>
 
                 <div style="display: flex; margin:auto auto auto auto;" v-if="creating">
-                	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/> 
+                	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
                 	<input v-model="newfileName" v-on:keyup.enter="setFilename" onFocus="this.value=''">
                 </div>
-                 
-                   
+
+
             </div>
             <!--
 			<tree
@@ -74,7 +71,7 @@
 						<div style="margin:auto auto auto auto; ">{{label}}</div>
 						<input type="image" src="./image/file.jpg" style="width: 10px; height:10px; position:absolute; right:3px; top:5px;" v-on:click="clickCancel(label,$event)" />
 					</div>
-					
+
 				</div>
 			</div>
 			<div id="editor">
@@ -84,7 +81,7 @@
 				<textarea id="terminal_text"></textarea>
 			</div>
 		</div>
-		
+
 
 		<div id="op">
 			<div id = "compile_deploy">
@@ -92,7 +89,7 @@
 		    	<button onclick="deploy_code()" class="btn">deploy</button>
 		    </div>
 			<button class="authorization btn" onclick="get_identity">授权</button>
-			
+
 			<div id="run_contract">
 				<div class="ops">
 				  <input class="contract_addr input1" v-model="contract_name" placeholder="Load contract">
@@ -107,7 +104,7 @@
 				                <a class="para_name">{{field.name}}: </a>
 				                <input class="para_input input1" :placeholder="field.type" v-model="field.input">
 				            </div>
-				            
+
 				        </div>
 				        <div style="height:40px"></div>
 				        <button class="action_excute btn" @click="exec_func(func.name,func.fields)">Exec</button>
@@ -118,7 +115,7 @@
 			</div>
 
 
-		</div>	
+		</div>
 </div>
 
 
@@ -130,13 +127,13 @@
 <script src="js/api_eos.js"></script>
 
 
-<script> 
-         
+<script>
+
 editor.session.on('change', function(delta) {
     // delta.start, delta.end, delta.lines, delta.action
         insertItem(filetree.focus, editor.getValue());
     });
- 
+
 
 </script>
 

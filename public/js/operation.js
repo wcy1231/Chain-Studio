@@ -1,8 +1,11 @@
 function compile_code()
 {
-    term.writeln('start compiling...')
-    var text = editor.getValue();
-    //alert(text);    
+    //term.writeln('start compiling...')
+    
+    filename = filelabel.focus 
+    //console.log(filename)
+    var text = getItem(filename)
+    //console.log(text)    
 
     var fm = new FormData();
     fm.append('file', text);
@@ -18,7 +21,7 @@ function compile_code()
         success: (data) => {
             console.log(data);
             window.compile_res=data;
-            term.writeln('compile done')
+            //term.writeln('compile done')
             //$("#t1").text(data);
             //eos.setabi('eosjunglewcy', JSON.parse(data))
         },
