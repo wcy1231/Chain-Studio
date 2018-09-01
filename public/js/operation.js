@@ -4,8 +4,8 @@ function compile_code()
 
     filename = filelabel.focus
     //console.log(filename)
-    var text = getItem(filename)
-    var chain_name= chain.chain_name
+    let text = getItem(filename)
+    let chain_name= chain.chain_name
     //console.log(text)
 
     var fm = new FormData();
@@ -35,17 +35,66 @@ function deploy_code() {
     //console.log(compile_res.abi);
     //console.log(compile_res.wasm);
     term.writeln('deploying')
-    eos.transaction(eos => {
-        eos.setcode(user_account.name,0,0,compile_res.wasm)
-        eos.setabi(user_account.name, JSON.parse(compile_res.abi))
-    }).then(rsp =>{
-        console.log(rsp)
-        term.writeln('tid:'+rsp.transaction_id)
-    }).catch(err=>{
-        console.log(err)
-        err=JSON.parse(err)
-        term.writeln('error:'+err['error']['what'])
-    })
+
+    let chain_name= chain.chain_name
+    if (chain_name === 'EOS' || chain_name === 'EOSJungle' || chain_name === 'ENU') {
+      eos.transaction(eos => {
+          eos.setcode(user_account.name,0,0,compile_res.wasm)
+          eos.setabi(user_account.name, JSON.parse(compile_res.abi))
+      }).then(rsp =>{
+          console.log(rsp)
+          term.writeln('http://dev.cryptolions.io/#tx:'+rsp.transaction_id)
+      }).catch(err=>{
+          console.log(err)
+          err=JSON.parse(err)
+          term.writeln('error:'+err['error']['what'])
+      })
+    }
+
+    if (chain_name === 'Nervos') {
+      let abi=JSON.parse(compile_res.abi)
+	    let myContract = new nervos.appchain.Contract(abi)
+
+	    const transaction = {
+			  from: nervos.appchain.accounts.wallet[0].address,
+			  privateKey: nervos.appchain.accounts.wallet[0].privateKey,
+			  nonce: 999999,
+			  quota: 1000000,
+			  chainId: 1,
+			  version: 0,
+			  validUntilBlock: 999999,
+			  value: '0x0',
+			};
+
+	    nervos.appchain.getBlockNumber()
+			  .then(current => {
+			    transaction.validUntilBlock = +current + 88 // update transaction.validUntilBlock
+			    // deploy contract
+			    return myContract
+			      .deploy({
+			        data: compile_res.wasm,
+			        arguments: [],
+			      })
+			      .send(transaction)
+			  })
+			  .then(txRes => {
+			    if (txRes.hash) {
+			      // get transaction receipt
+			      term.writeln("http://microscope.cryptape.com/#/transaction/"+txRes.hash)
+			      return nervos.listeners.listenToTransactionReceipt(txRes.hash)
+			    } else {
+			      throw new Error('No Transaction Hash Received')
+			    }
+			  }).then(res => {
+			    const { contractAddress, errorMessage } = res
+			    if (errorMessage) throw new Error(errorMessage)
+			    console.log(`contractAddress is: ${contractAddress}`)
+          term.writeln("http://microscope.cryptape.com/#/account/"+contractAddress)
+			    _contractAddress = contractAddress
+			    nervos.appchain.storeAbi(contractAddress, abi, transaction) // store abi on the chain
+			  })
+
+    }
 }
 
 
@@ -58,9 +107,22 @@ new Vue({
   },
   methods: {
     submit_contract(){
-        eos.getAbi(this.contract_name).then(rsp =>{
-            this.func_list = rsp.abi.structs
-        })
+        let chain_name= chain.chain_name
+        if (chain_name === 'EOS' || chain_name === 'EOSJungle' || chain_name === 'ENU') {
+          eos.getAbi(this.contract_name).then(rsp =>{
+              this.func_list = rsp.abi.structs
+          })
+        }
+
+        if (chain_name === 'Nervos') {
+            nervos.appchain.getAbi(this.contract_name).then(rsp =>{
+                for (t=0; t< rsp.length;t++) {
+                    rsp[t].fields= rsp[t].inputs
+                }
+                this.func_list = rsp
+                window.tmp = rsp
+            })
+        }
     },
     exec_func(name, fields){
         console.log(name,fields)

@@ -9,6 +9,7 @@ var cp = require('child_process');
 
 app.use(express.static('ace/build/src'));
 app.use(express.static('public'));
+app.use(express.static('node_modules'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
@@ -63,7 +64,8 @@ app.post('/compile', upload.single('file'), (req, res, next) => {
   			console.log(stdout2);
   			res.json({
   				'abi':abi,
-  				'wasm':hex2a(wasm.toString('Hex'))
+  				'wasm':hex2a(wasm.toString('Hex')),
+          'chain_name':chain_name
   			})
   			cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
   		});
@@ -95,7 +97,8 @@ app.post('/compile', upload.single('file'), (req, res, next) => {
 
                 res.json({
                   'abi':abi,
-                  'wasm':hex2a(wasm.toString('Hex'))
+                  'wasm':hex2a(wasm.toString('Hex')),
+                  'chain_name':chain_name
                 })
                 cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
               })
