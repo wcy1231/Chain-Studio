@@ -1,6 +1,6 @@
 ace.require("ace/ext/language_tools");
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/solarized_dark");
+editor.setTheme("ace/theme/onedark");
 editor.getSession().setMode("ace/mode/c_cpp");
 
 //editor.container.style.background= rgb(15,15,15);
@@ -12,5 +12,3 @@ editor.setOptions({
     enableSnippets: true,
     enableLiveAutocompletion: true
 });
-
-

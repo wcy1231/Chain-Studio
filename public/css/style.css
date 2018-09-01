@@ -88,9 +88,12 @@ body{
 
 }
 
+<<<<<<< HEAD
 .myEditor{
   background-color: rgb(40,44,52);
 }
+=======
+>>>>>>> db57ed59a8fc913fcc812a235439e54815ca8028
 
 #terminal{
     border-style:solid;

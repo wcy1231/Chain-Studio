@@ -7,6 +7,7 @@ var upload= multer({dest:'upload/'});
 var fs = require('fs');
 var cp = require('child_process');
 
+app.use(express.static('ace/build/src'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
