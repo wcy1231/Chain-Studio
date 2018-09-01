@@ -212,9 +212,9 @@ body{
 
 .ops{
     background: rgb(33,37,43);
-    padding: 12.5px 10px;
+    padding: 12.5px 0px;
     border-style: solid;
-    border-width: 1px 0px 0px 0px;
+    border-width: 0.5px 0px;
     border-color: rgb(24,26,31);
 
 }
@@ -223,10 +223,7 @@ body{
 .op_action{
    border-style:solid;
    border-color: rgb(24,26,31);
-   border-width: 0.5px;
-   border-radius:2.5px;
-   margin: 0px 0px 10px 0px;
-   color:#FFFFFF;
+   border-width: 1px 0px 0px 0px;
    padding:5px 5px 5px 5px;
    position:relative;
 }
@@ -234,15 +231,16 @@ body{
 .action_name{
     font-weight: bold;
     font-size: 15px;
+    color: rgb(194,197,203);
+    margin:5px 20px;
 }
 
 .action_excute{
     position:absolute;
     right:9px;
     bottom:9px;
-    height:25px;
-    width:120px;
-    border-radius: 5px;
+    height:20px;
+    width:70px;
 }
 
 .paras{
@@ -254,6 +252,7 @@ body{
     font-size: 10px;
     min-width: 130px;
     text-align:center;
+    color: rgb(194,197,203);
 }
 
 .para_input{
@@ -279,12 +278,21 @@ body{
   min-height: 35px;
 }
 
+.btn1{
+	border-color: rgb(65,93,148);
+	border-style: none;
+	background-color: rgb(65,93,148);
+	color: rgb(194,197,203);
+  min-height: 20px;
+  border-radius: 2px
+}
+
 
 .input1{
 	border-color: rgb(40,44,52);
 	border-style: solid;
 	background-color: rgb(40,44,52);
-	color: rgb(255,255,255);
+	color: rgb(194,197,203);
 }
 
 .header{

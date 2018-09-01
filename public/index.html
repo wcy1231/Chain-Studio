@@ -71,7 +71,7 @@
 			<div id="run_contract">
 				<div class="ops">
 				  <input class="contract_addr input1" v-model="contract_name" placeholder="Load contract">
-				  <button class="call btn" @click="submit_contract">At Contract</button>
+				  <button class="call btn1" @click="submit_contract">At Contract</button>
 				</div>
 
 				<div class="ops" v-if="!is_func_list_empty()">
@@ -85,7 +85,7 @@
 
 				        </div>
 				        <div style="height:40px"></div>
-				        <button class="action_excute btn" @click="exec_func(func.name,func.fields)">Exec</button>
+				        <button class="action_excute btn1" @click="exec_func(func.name,func.fields)">Exec</button>
 				    </div>
 
 				</div>
