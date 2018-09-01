@@ -222,7 +222,7 @@ body{
     background: rgb(33,37,43);
     padding: 12.5px 0px;
     border-style: solid;
-    border-width: 0.5px 0px;
+    border-width: 0px 0px;
     border-color: rgb(24,26,31);
 
 }
@@ -312,6 +312,42 @@ body{
   color:rgb(212,215,221);
 }
 
+
+select#chooseChain
+{
+
+   width                    : 120px;
+   min-height                   : 20px;
+   vertical-align           : middle;
+   border                   : 1px solid rgb(33,37,43);
+   -webkit-appearance       : none;
+
+   color:            rgb(155,163,176);
+   text-align: center;
+   text-align-last: center;
+
+   font-size                : 10px;
+   cursor                   : pointer;
+   outline                  : none;
+   background-color:rgb(41,45,52);
+}
+
+label#lblSelect{
+  display: flex;
+  justify-content:center;
+  font-family: Consolas;
+ min-height                   : 20px;
+  color:            rgb(212,215,221);
+  border-style: solid;
+  border-top-color: rgb(24,26,31);
+  border-width: 0.5px 0 0 0 ;
+
+}
+option{
+    color: black;
+    background: #A6E1EC;
+    line-height: 20px;
+}
 
 
 ::-webkit-scrollbar-track-piece{width:10px;background-color:rgb(33,37,43) ;  }

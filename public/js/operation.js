@@ -95,7 +95,11 @@ var chain = new Vue({
     chain_list:['EOS','EOSJungle','ENU','Nervos'],
     chain_name:''
   },
+  created(){
+    this.chain_name = this.chain_list[1];
+  },
   methods:{
+
     getChain(){
       return this.chain_name;
     }
