@@ -14,7 +14,15 @@ body{
     margin:0 auto;
     height:100%;
 }
-
+#header{
+    top:0;
+    width:100%;
+    height:25px;
+    background: rgb(51,51,51);
+    border-style:solid;
+    border-width: 0px 0px 0.5px 0px;
+    border-bottom-color: rgb(68,68,68);
+}
 
 #compile_deploy{
     position: absolute;
@@ -30,7 +38,7 @@ body{
 }
 
 #ft{
-    background: rgb(33,37,43);
+    background: rgb(37,37,38);
     position: absolute;
     overflow: hidden;
     width:180px;
@@ -41,10 +49,10 @@ body{
 
 #file_op{
     height: 25px;
-    background: rgb(33,37,43);
+    background: rgb(51,51,51);
     border-style:solid;
     border-width: 0px 0px 1px 0px;
-    border-color: rgb(33,37,43);
+    border-bottom-color: rgb(68,68,68);
 }
 #file_tree{
     background: #FFFFFF;
@@ -77,8 +85,8 @@ body{
     background: rgb(60,63,65);
 
     border-style:solid;
-    border-width: 0px 0px 0px 1px;
-    border-color: rgb(24,26,31) ;
+    border-width: 0px 0px 0px 2px;
+    border-color: rgb(68,68,68) ;
 
     height: 100%;
     display:flex;
@@ -90,19 +98,19 @@ body{
 }
 
 .myEditor{
-  background-color: rgb(40,44,52);
+  background-color: rgb(30,30,30);
 }
 #terminal{
     border-style:solid;
-    border-width: 2px 0px 0px 0px;
-    border-color: rgb(24,26,31);
+    border-width: 1px 0px 0px 0px;
+    border-color: rgb(68,68,68);
     flex:1;
     display:flex;
 }
 
 #terminal_text{
 
-    background-color: rgb(33,37,43);
+    background-color: #000000;
     caret-color: white;
     text-shadow: 0px 0px 0px #FFFFFF;
     -webkit-text-fill-color: transparent;
@@ -111,7 +119,6 @@ body{
     letter-spacing:1px;
     padding:10px 10px 10px 10px;
     flex :1;
-    border-style: none;
 }
 
 #createNewFile{
@@ -126,12 +133,12 @@ body{
 .LabelSelected{
     height:24px;
     min-width:100px;
-    background: rgb(40, 44, 52);
+    background: rgb(30, 30, 30);
     border-style:solid;
-    border-width: 0px 1px 2px 2px;
-    border-bottom-color: rgb(40,44,52);
-    border-left-color: rgb(86,138,242);
-    border-right-color: rgb(24,26,31);
+    border-width: 0px 1px 2px 0px;
+    border-bottom-color: rgb(67,158,184);
+    border-left-color: rgb(75,75,75);
+    border-right-color: rgb(75,75,75);
     margin:0;
     padding:0;
     text-align:center;
@@ -144,11 +151,12 @@ body{
     min-width:100px;
     height:24px;
 
-    background: rgb(33, 37, 43);
+    background: rgb(60, 62, 63);
     border-style:solid;
     border-width: 0px 1px 2px 0px;
-    border-bottom-color: rgb(24, 26, 31);
-    border-right-color: rgb(24, 26, 31);
+    border-bottom-color: rgb(60, 62, 63);
+    border-left-color: rgb(75,75,75);
+    border-right-color: rgb(75,75,75);
     margin:0;
     padding:0;
     text-align:center;
@@ -158,12 +166,12 @@ body{
 
 #ws_tab
 {
-    color:rgb(33,37,43);
+    color:rgb(134,162,171);
     height:25px;
     border-style:solid;
-    border-width: 0px 0px 0px 0px;
-    border-color: rgb(24,26,31);
-	  background: rgb(33,37,43);
+    border-width: 0px 1px 1px 0px;
+    border-color: rgb(68,68,68);
+	background: rgb(51,51,51);
     display:flex;
 }
 
@@ -173,11 +181,11 @@ body{
     right:0;
     top:0;
     bottom: 0;
-    background: rgb(33,37,43);
+    background: rgb(30,30,30);
     border-style:solid;
 
-    border-width: 0px 0px 0px 1px;
-    border-color: rgb(24,26,31);
+    border-width: 0px 0px 0px 2px;
+    border-left-color: rgb(68,68,68);
     overflow:hidden;
 
     color:#000000;
@@ -192,7 +200,7 @@ body{
 
 .ops{
     margin: 10px 5px;
-    background: rgb(40,44,52);
+    background: rgb(39,40,34);
     padding: 12.5px 10px;
     border-radius:5px;
 
@@ -202,7 +210,7 @@ body{
 
 .op_action{
    border-style:solid;
-   border-color: rgb(24,26,31);
+   border-color: rgb(68,68,68);
    border-width: 0.5px;
    border-radius:2.5px;
    margin: 0px 0px 10px 0px;
@@ -249,16 +257,16 @@ body{
 
 
 .btn{
-	border-color: rgb(33,37,43);
+	border-color: rgb(51,51,51);
 	border-style: none;
-	background-color: rgb(33,37,43);
+	background-color: rgb(51,51,51);
 	color: rgb(255,255,255);
 }
 
 
 .input1{
-	border-color: rgb(33,37,43);
+	border-color: rgb(51,51,51);
 	border-style: solid;
-	background-color: rgb(33,37,43);
+	background-color: rgb(51,51,51);
 	color: rgb(255,255,255);
 }

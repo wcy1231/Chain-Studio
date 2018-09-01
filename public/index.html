@@ -19,13 +19,6 @@
 </head>
 <body>
 
-<div id="header">
-	<div id = "compile_deploy">
-		<button onclick="compile_code()">compile</button>
-    	<button onclick="deploy_code()">deploy</button>
-    </div>
-            
-</div>
 
 <div id="container">
         
@@ -83,13 +76,16 @@
 		
 
 		<div id="op">
-			<br>
-			<button class="authorization" onclick="get_identity">授权</button>
-			<br>
+			<div id = "compile_deploy">
+				<button onclick="compile_code()" class="btn">compile</button>
+		    	<button onclick="deploy_code()" class="btn">deploy</button>
+		    </div>
+			<button class="authorization btn" onclick="get_identity">授权</button>
+			
 			<div id="run_contract">
 				<div class="ops">
-				  <input class="contract_addr" v-model="contract_name" placeholder="Load contract">
-				  <button class="call" @click="submit_contract">At Contract</button>
+				  <input class="contract_addr input1" v-model="contract_name" placeholder="Load contract">
+				  <button class="call btn" @click="submit_contract">At Contract</button>
 				</div>
 
 				<div class="ops" v-if="!is_func_list_empty()">
@@ -98,12 +94,12 @@
 				        <div>
 				            <div class="paras" v-for="(field, index) in func.fields">
 				                <a class="para_name">{{field.name}}: </a>
-				                <input class="para_input" :placeholder="field.type" v-model="field.input">
+				                <input class="para_input input1" :placeholder="field.type" v-model="field.input">
 				            </div>
 				            
 				        </div>
 				        <div style="height:40px"></div>
-				        <button class="action_excute" @click="exec_func(func.name,func.fields)">Exec</button>
+				        <button class="action_excute btn" @click="exec_func(func.name,func.fields)">Exec</button>
 				    </div>
 
 				</div>
