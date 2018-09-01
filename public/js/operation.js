@@ -51,7 +51,8 @@ new Vue({
   el: '#run_contract',
   data: {
     contract_name: 'eosio',
-    func_list:{}
+    func_list:{},
+
   },
   methods: {
     submit_contract(){
@@ -85,4 +86,18 @@ new Vue({
     }
   }
 
+})
+
+
+var chain = new Vue({
+  el: '#chooseChain',
+  data:{
+    chain_list:['EOS','EOSJungle','ENU','Nervos'],
+    chain_name:''
+  },
+  methods:{
+    getChain(){
+      return this.chain_name;
+    }
+  }
 })

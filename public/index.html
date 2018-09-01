@@ -71,9 +71,12 @@
 		<div id="op">
 			<div id = "compile_deploy" >
 				<button onclick="compile_code()" class="btn half">Compile</button>
-		    	<button onclick="deploy_code()" class="btn half">Deploy</button>
-		    </div>
+		    <button onclick="deploy_code()" class="btn half">Deploy</button>
+		  </div>
 
+			<select id="chooseChain" v-model="chain_name">
+			  <option v-for="chain in chain_list" > {{chain}} </option>
+			</select>
 			<div id="run_contract">
 				<div class="ops">
 				  <input class="contract_addr input1" v-model="contract_name" placeholder="Load contract">
