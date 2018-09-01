@@ -16,12 +16,7 @@ body{
 }
 
 
-#compile_deploy{
-    position: absolute;
-    right:40px;
-    top:0px;
 
-}
 #container{
     width:100%;
     height:100%;
@@ -55,16 +50,16 @@ body{
 }
 .fileSelected{
     margin:3px 0 3px 0;
-    background:rgb(47, 101, 202);
-    color:rgb(255, 255, 255);
-    height:20px;
+    background:rgb(59,64,75);
+    color:rgb(212, 215, 221);
+    height:30px;
 
 }
 
 .fileUnselected{
-    height:20px;
+    height:30px;
     margin:3px 0 3px 0;
-    color:rgb(185, 92, 80);
+    color:rgb(155,163,176);
 
 }
 .newFileDialog{
@@ -89,13 +84,14 @@ body{
     flex-direction: column;
 }
 #editor{
-    height:500px;
+    height:450px;
 
 }
 
 .myEditor{
   background-color: rgb(40,44,52);
 }
+
 #terminal{
     border-style:solid;
     border-width: 2px 0px 0px 0px;
@@ -127,32 +123,35 @@ body{
 }
 
 
+
+
+
 .LabelSelected{
-    height:24px;
-    min-width:100px;
-    background: rgb(40, 44, 52);
+
+    color: rgb(212,215,221);
+    line-height:34px;
+    min-width:150px;
+    background: rgb(41, 45, 52);
     border-style:solid;
-    border-width: 0px 1px 2px 2px;
-    border-bottom-color: rgb(40,44,52);
-    border-left-color: rgb(86,138,242);
-    border-right-color: rgb(24,26,31);
+    border-width: 1px 1px 1px 2px;
+    border-left-color: rgb(89, 140 ,239);
+    border-color: rgb(24, 26 ,31) rgb(24, 26 ,31)  rgb(41,45, 52) rgb(89, 140 ,239);
     margin:0;
     padding:0;
     text-align:center;
-    font-weight: 700;
+    font-weight: 400;
     font-size:13px;
 
 }
 
 .LabelUnselected{
-    min-width:100px;
-    height:24px;
-
+    min-width:150px;
+    line-height:34px;
+    color:rgb(155, 163, 176);
     background: rgb(33, 37, 43);
     border-style:solid;
-    border-width: 0px 1px 2px 0px;
-    border-bottom-color: rgb(24, 26, 31);
-    border-right-color: rgb(24, 26, 31);
+    border-width: 1px 1px 1px 2px;
+    border-color:rgb(24,26,31) rgb(24,26,31) rgb(24,26,31)  rgb(33,37, 43);
     margin:0;
     padding:0;
     text-align:center;
@@ -163,16 +162,21 @@ body{
 
 #ws_tab
 {
-    color:rgb(33,37,43);
-    height:25px;
     border-style:solid;
+
     border-width: 0px 0px 0px 0px;
     border-color: rgb(24,26,31);
 	  background: rgb(33,37,43);
     display:flex;
 }
 
-
+.fill_in{
+  border-style:solid;
+  border-width: 1px 0px 1px 0px;
+  border-color: rgb(24, 26, 31);
+  line-height:34px;
+  width:100%;
+}
 
 #op{
     position: absolute;
@@ -193,6 +197,13 @@ body{
 
 }
 
+#compile_deploy{
+    display:flex;
+    min-height: 34px;
+    border-style:solid;
+    border-width: 1px 1px 1px 0px;
+    border-color: rgb(24, 26, 31);
+}
 .contract_addr{
 
 }
@@ -256,12 +267,16 @@ body{
     min-height: 40px;
 }
 
+.half{
+    width:50%;
+}
 
 .btn{
 	border-color: rgb(33,37,43);
 	border-style: none;
 	background-color: rgb(33,37,43);
-	color: rgb(255,255,255);
+	color: rgb(194,197,203);
+  min-height: 35px;
 }
 
 
@@ -270,4 +285,11 @@ body{
 	border-style: solid;
 	background-color: rgb(33,37,43);
 	color: rgb(255,255,255);
+}
+
+.header{
+  display:flex;
+  height:32px;
+  background-color:rgb(33, 37, 43);
+  color:rgb(212,215,221);
 }
