@@ -21,20 +21,21 @@
 
 		<div id="ft">
 			<div class="header">
-        <div>File</div>
-				<input type="image" src="./image/newfile.jpg" style="width: 20px; height:20px; margin-left:20px" v-on:click="createNewFile"/>
+        <div style="margin:auto">File</div>
+				<input type="image" src="./image/newfile.jpg" style="width: 20px; height:20px;" v-on:click="createNewFile"/>
       </div>
       <div id="file_list">
           <div v-for="data in treeData">
               <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }">
               	<div style="margin:auto auto auto auto;">
-                	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
+                	<input type="image" src="./image/file_no.svg" style="width: 15px; height:15px;" v-if="data['text']!=focus"/>
+									<input type="image" src="./image/file_chosen.svg" style="width: 15px; height:15px;" v-if="data['text']==focus"/>
                 	{{data['text']}}
               	</div>
               </div>
           </div>
           <div style="display: flex; margin:auto auto auto auto;" v-if="creating">
-          	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
+          	<input type="image" src="./image/file_chosen.svg" style="width: 15px; height:15px;"/>
           	<input v-model="newfileName" v-on:keyup.enter="setFilename" onFocus="this.value=''">
           </div>
       </div>
@@ -46,7 +47,7 @@
 				<div v-for="label in labelList" v-on:click="clickLabel(label)" v-bind:class="{ LabelSelected: (label==focus),LabelUnselected:(label!=focus) }" >
 					<div style="display: flex; position:relative;">
 						<div style="margin:auto auto auto auto; ">{{label}}</div>
-						<input type="image" src="./image/file.jpg" style="width: 10px; height:10px; position:absolute; right:3px; top:5px;" v-on:click="clickCancel(label,$event)" />
+						<input type="image" src="./image/close1.svg" style="width: 10px; height:10px; position:absolute; right:20px; top:13px;" v-on:click="clickCancel(label,$event)" />
 					</div>
 				</div>
         <div class="fill_in">
