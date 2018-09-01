@@ -137,7 +137,7 @@ new Vue({
             contract[name](param,{authorization:[user_account.name]})
         }).then(rsp =>{
             console.log(rsp)
-            term.writeln('tid:'+rsp.transaction_id)
+            term.writeln("http://dev.cryptolions.io/#tx:"+rsp.transaction_id)
         }).catch(err=>{
             console.log(err)
             //err=JSON.parse(err)
