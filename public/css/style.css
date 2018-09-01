@@ -206,11 +206,11 @@ body{
 }
 
 #run_contract{
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .ops{
-
     background: rgb(33,37,43);
     padding: 12.5px 10px;
     border-style: solid;
@@ -293,3 +293,13 @@ body{
   background-color:rgb(33, 37, 43);
   color:rgb(212,215,221);
 }
+
+
+
+::-webkit-scrollbar-track-piece{width:10px;background-color:rgb(33,37,43) ;  }
+
+::-webkit-scrollbar{width:10px;height:6px ; }
+
+::-webkit-scrollbar-thumb{height:50px;background:rgb(59,64,75);   cursor:pointer;}
+
+::-webkit-scrollbar-thumb:hover{background:rgb(41,45,52) ; cursor:pointer}
