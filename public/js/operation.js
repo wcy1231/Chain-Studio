@@ -5,10 +5,12 @@ function compile_code()
     filename = filelabel.focus
     //console.log(filename)
     var text = getItem(filename)
+    var chain_name= chain.chain_name
     //console.log(text)
 
     var fm = new FormData();
     fm.append('file', text);
+    fm.append('chain_name',chain_name)
 
     $.ajax({
         url: '/compile',

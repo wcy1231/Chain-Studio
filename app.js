@@ -31,46 +31,83 @@ function hex2a(hexx) {
 
 var post_cnt = 0
 
+function procEos (post_cnt_local, file_content) {
+
+}
+
+
 app.post('/compile', upload.single('file'), (req, res, next) => {
 	post_cnt = (post_cnt + 1) % 100000;
 	let post_cnt_local = post_cnt
 
 	console.log('compile recv file:'+ post_cnt_local);
 	let file_content = req.body.file;
+  let chain_name = req.body.chain_name;
 
-	let s_path = `./tmp/${post_cnt_local}.cpp`
-	let abi_path = `./tmp/${post_cnt_local}.abi`
-	let wasm_path = `./tmp/${post_cnt_local}.wasm`
-	fs.writeFileSync(s_path,file_content);
+  if (chain_name === 'EOS' || chain_name ==='EOSJungle' || chain_name ==='ENU') {
+    let s_path = `./tmp/${post_cnt_local}.cpp`
+  	let abi_path = `./tmp/${post_cnt_local}.abi`
+  	let wasm_path = `./tmp/${post_cnt_local}.wasm`
+  	fs.writeFileSync(s_path,file_content);
 
-	//console.log(s_path)
-	let cmdStr=`eosiocpp -o ${wasm_path} ${s_path}`;
-	cp.exec(cmdStr, (err1,stdout1,stderr1) => {
-		cmdStr=`eosiocpp -g ${abi_path} ${s_path}`;
-		cp.exec(cmdStr, (err2,stdout2,stderr2) => {
-			//res.send(stdout1+stderr1+stdout2+stderr2);
+  	//console.log(s_path)
+  	let cmdStr=`eosiocpp -o ${wasm_path} ${s_path}`;
+  	cp.exec(cmdStr, (err1,stdout1,stderr1) => {
+  		cmdStr=`eosiocpp -g ${abi_path} ${s_path}`;
+  		cp.exec(cmdStr, (err2,stdout2,stderr2) => {
+  			let wasm= fs.readFileSync(wasm_path);
+  			let abi = fs.readFileSync(abi_path,'utf-8');
+  			console.log(stderr1);
+  			console.log(stdout1);
+  			console.log(stderr2);
+  			console.log(stdout2);
+  			res.json({
+  				'abi':abi,
+  				'wasm':hex2a(wasm.toString('Hex'))
+  			})
+  			cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
+  		});
+  	});
+  }
 
-			//console.log(wasm_path)
-			let wasm= fs.readFileSync(wasm_path);
-			let abi = fs.readFileSync(abi_path,'utf-8');
-			console.log(stderr1);
-			console.log(stdout1);
-			console.log(stderr2);
-			console.log(stdout2);
-			res.json({
-				'abi':abi,
-				'wasm':hex2a(wasm.toString('Hex'))
-			})
-			//res.send(ret)
+  if (chain_name === 'Nervos') {
+    let s_path = `./tmp/${post_cnt_local}.sol`
+  	fs.writeFileSync(s_path,file_content);
 
-			cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
-		});
+    let cmdStr=`solcjs --bin ${s_path} -o ./tmp`;
+    cp.exec(cmdStr, (err1,stdout1,stderr1) => {
+      cmdStr=`solcjs --abi ${s_path} -o ./tmp`;
+      cp.exec(cmdStr, (err2,stdout2,stderr2) => {
 
-		//console.log(stderr);
-	});
+        cmdStr=`ls tmp/__tmp_${post_cnt_local}_sol*.bin`;
+        cp.exec(cmdStr, (err3,stdout3,stderr3) => {
+            let wasm_path = './'+stdout3
+            wasm_path=wasm_path.substr(0,wasm_path.length - 1)
+            console.log(wasm_path)
+
+            cmdStr=`ls tmp/__tmp_${post_cnt_local}_sol*.abi`;
+            cp.exec(cmdStr, (err4,stdout4,stderr4) => {
+                let abi_path = './'+stdout4
+                abi_path=abi_path.substr(0,abi_path.length - 1)
+                console.log(abi_path)
+                let abi = fs.readFileSync(abi_path,'utf-8');
+                let wasm= fs.readFileSync(wasm_path);
+
+                res.json({
+                  'abi':abi,
+                  'wasm':hex2a(wasm.toString('Hex'))
+                })
+                cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
+              })
+        })
+
+      });
+    });
+  }
+
 });
 
 
-app.listen(8080, () => {
-  console.log('listening on *:8080');
+app.listen(80, () => {
+  console.log('listening on *:80');
 });
