@@ -6,8 +6,9 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/liquor-tree/dist/liquor-tree.umd.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/2.9.2/xterm.js"></script>
+<link rel="stylesheet" href="./node_modules/xterm/dist/xterm.css" />
+<script src="./node_modules/xterm/dist/xterm.js"></script>
+<script src="./node_modules/xterm/dist/addons/fit/fit.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.6/lib/eos.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.1/ace.js"></script>
@@ -76,7 +77,7 @@
 			</div>
 
 			<div id="terminal">
-			
+				<textarea></textarea>
 			</div>
 		</div>
 		

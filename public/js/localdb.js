@@ -105,8 +105,8 @@ var filetree = new Vue({
 
     		//console.log(JSON.parse(localStorage.getItem("folderTree")));
     		this.treeData = JSON.parse(localStorage.getItem("folderTree"));
-            console.log(this.treeData);
-            console.log(editor);
+            //console.log(this.treeData);
+            //console.log(editor);
             if (this.treeData.length>0){
                 var t = this.treeData[0].text;
 

@@ -27,15 +27,11 @@ html,body{
     height:100%;
 }
 
-
-
-
-
 #ft{
 
      background: rgb(60,63,65);
      border-style:solid;
-     border-width: 0px 2px 0px 0px;
+     border-width: 0px 1px 0px 0px;
      border-right-color: rgb(40,40,40) ;
      position: absolute;
      width:180px;
@@ -77,10 +73,12 @@ html,body{
 
 
 #workspace{
-    margin-left: 182px; 
-    margin-right:352px;
+    margin-left: 181px; 
+    margin-right:351px;
     background: rgb(60,63,65); 
     height: 100%;
+    display:flex;
+    flex-direction: column;
 }
 #editor{
     height:500px;
@@ -102,11 +100,11 @@ html,body{
 
 
 .LabelSelected{
-    height:20px;
+    height:24px;
     min-width:100px;
     background: rgb(81, 86, 88);
     border-style:solid;
-    border-width: 0px 0.5px 3px 0.5px;
+    border-width: 0px 0.5px 2px 0.5px;
     border-bottom-color: rgb(67,158,184);
     border-left-color: rgb(75,75,75);
     border-right-color: rgb(75,75,75);
@@ -120,7 +118,7 @@ html,body{
 
 .LabelUnselected{
     min-width:100px;
-    height:20px;
+    height:24px;
 
     background: rgb(60, 62, 63);
     border-style:solid;
@@ -138,7 +136,7 @@ html,body{
 #ws_tab    	
 {
     color:rgb(134,162,171);
-    height:22px;
+    height:25px;
     border-style:solid;
     border-width: 0px 1px 1px 1px;
     border-color: rgb(75,75,75);
@@ -154,7 +152,7 @@ html,body{
     bottom: 0;
     background: rgb(60,63,65);
     border-style:solid;
-    border-width: 0px 0px 0px 2px;
+    border-width: 0px 0px 0px 1px;
     border-left-color: rgb(40,40,40);
     overflow:auto;
     color:#000000;
