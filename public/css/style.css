@@ -208,8 +208,9 @@ body{
     border-width: 1px 1px 1px 0px;
     border-color: rgb(24, 26, 31);
 }
-.contract_addr{
 
+.contract_addr{
+  margin-left: 30px;
 }
 
 #run_contract{
@@ -252,11 +253,12 @@ body{
 
 .paras{
     display:flex;
+    margin: 3px 0px;
 }
 
 .para_name{
     font-weight:200;
-    font-size: 10px;
+    font-size: 12px;
     min-width: 130px;
     text-align:center;
     color: rgb(194,197,203);

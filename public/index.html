@@ -68,8 +68,8 @@
 
 		<div id="op">
 			<div id = "compile_deploy" >
-				<button onclick="compile_code()" class="btn half">compile</button>
-		    	<button onclick="deploy_code()" class="btn half">deploy</button>
+				<button onclick="compile_code()" class="btn half">Compile</button>
+		    	<button onclick="deploy_code()" class="btn half">Deploy</button>
 		    </div>
 
 			<div id="run_contract">
@@ -80,7 +80,7 @@
 
 				<div class="ops" v-if="!is_func_list_empty()">
 				    <div class="op_action" v-for="func in func_list">
-				        <div class="action_name"> {{func.name}}</div>
+				        <div class="action_name"> {{func.name}}:</div>
 				        <div>
 				            <div class="paras" v-for="(field, index) in func.fields">
 				                <a class="para_name">{{field.name}}: </a>
