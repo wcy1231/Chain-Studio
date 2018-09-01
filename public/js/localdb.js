@@ -13,7 +13,7 @@ function getStorageList(){
 
 
 Vue.use(LiquorTree);
-	
+
 var filelabel = new Vue({
     el:'#ws_tab',
     data:{
@@ -28,16 +28,18 @@ var filelabel = new Vue({
                 filetree.focus = name;
                 editor.setValue(getItem(name),-1);
                 this.focus = name;
+                this.changeEditorMode(this.focus);
             }
         },
         clickCancel(label,event){
             //filetree.focus = name;
             var len = this.labelList.length;
-            
+
             if (len==1){
                 this.focus = '';
                 this.labelList = [];
                 filetree.focus = '';
+                this.changeEditorMode(this.focus);
             }
             else{
                 if (label == this.focus){
@@ -50,9 +52,9 @@ var filelabel = new Vue({
                     if (index != -1){
                         this.labelList.splice(index,1);
                     }
-                }         
-            }      
-                 
+                }
+            }
+
             event.stopPropagation();
         },
     }
@@ -71,14 +73,14 @@ var filetree = new Vue({
             //{ text: 'hello.cpp'}
 		],
 		treeOptions: {
-			
+
       	}
  	},
  	created: function () {
         //localStorage.clear();
         if (localStorage.length == 0 ){
             var File = [{ text: 'hello.cpp'}];
-            
+
             insertItem('folderTree', JSON.stringify(File));
             insertItem('hello.cpp', "#include.....");
         }
@@ -96,6 +98,7 @@ var filetree = new Vue({
             this.focus = name;
             editor.setValue(getItem(name),-1);
             filelabel.focus = name;
+            this.changeEditorMode(this.focus);
             return getItem(name);
         },
     	initTree(){
@@ -110,12 +113,13 @@ var filetree = new Vue({
                 this.focus = t;
                 editor.setValue(getItem(t),-1);
                 filelabel.focus = t;
+                this.changeEditorMode(this.focus);
                 //console.log(this.treeData[0]);
             }
 
     		//console.log(this.treeData);
     	},
-        
+
     	getData(str){
     		return localStorage.getItem(str);
     	},
@@ -123,23 +127,40 @@ var filetree = new Vue({
     		//this.seen = true;
             this.creating = true;
     	},
-        setFilename(){
-            console.log(this.newfileName);
-            if (this.newfileName != undefined){
-                var data = { text : this.newfileName};
-                this.treeData.push(data);
-                insertItem(this.newfileName,"//init");
-                this.onFileSelected(this.newfileName);
-                this.storage();
-            }
-            else{
-                alert("null filename");
-            }
-            this.creating = false;
-        },
+      setFilename(){
+          console.log(this.newfileName);
+          if (this.newfileName != undefined){
+              var data = { text : this.newfileName};
+              this.treeData.push(data);
+              insertItem(this.newfileName,"//init");
+              this.onFileSelected(this.newfileName);
+              this.storage();
+          }
+          else{
+              alert("null filename");
+          }
+          this.creating = false;
+      },
     	storage(){
     		insertItem("folderTree", JSON.stringify(this.treeData));
-    	}
- 	}
+    	},
+      changeEditorMode(filename){
+         var subs3 = filename.substr(filename.length-3,3);
+         var subs4 = filename.substr(filename.length-4,4);
+         console.log(subs3);
+         if (subs3=='.js'){
+            console.log(".js");
+            editor.getSession().setMode("ace/mode/javascript");
+         }
+         else if (subs4=='.sol'){
+            console.log(".sol");
+            editor.getSession().setMode("ace/mode/golang");
+         }
+         else{
+            console.log(".cpp");
+            editor.getSession().setMode("ace/mode/c_cpp");
+         }
+
+ 	    }
+    }
 });
-   
