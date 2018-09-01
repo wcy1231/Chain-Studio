@@ -67,7 +67,11 @@ body{
     color:rgb(185, 92, 80);
 
 }
-
+.newFileDialog{
+    position:absolute;
+    top : 200px;
+    left:200px;
+}
 
 
 
@@ -156,6 +160,7 @@ body{
     font-size: 13px;
 }
 
+
 #ws_tab
 {
     color:rgb(33,37,43);
@@ -167,6 +172,8 @@ body{
     display:flex;
 }
 
+
+
 #op{
     position: absolute;
     width:350px;
@@ -176,9 +183,14 @@ body{
     background: rgb(33,37,43);
     border-style:solid;
 
+<<<<<<< HEAD
     border-width: 0px 0px 0px 1px;
     border-color: rgb(24,26,31);
     overflow:hidden;
+=======
+    border-width: 0px 0px 0px 2px;
+    border-left-color: rgb(68,68,68);
+>>>>>>> 4eff751a3485b88021c378c256bd2eebae7ea84c
 
     color:#000000;
     display:flex;
@@ -190,13 +202,15 @@ body{
 
 }
 
+#run_contract{
+    overflow: scroll;
+}
+
 .ops{
     margin: 10px 5px;
     background: rgb(40,44,52);
     padding: 12.5px 10px;
     border-radius:5px;
-
-
 }
 
 

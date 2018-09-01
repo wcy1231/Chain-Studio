@@ -55,7 +55,6 @@ var filelabel = new Vue({
                  
             event.stopPropagation();
         },
-
     }
 })
 
@@ -66,18 +65,17 @@ var filetree = new Vue({
 	el: '#ft',
 	data: {
 		focus:'',
-		seen: false,
-		newfileName:'input your file name',
+		newfileName:'undefined',
+        creating:false,
 		treeData : [
             //{ text: 'hello.cpp'}
 		],
 		treeOptions: {
 			
       	}
-      	
  	},
  	created: function () {
-        
+        //localStorage.clear();
         if (localStorage.length == 0 ){
             var File = [{ text: 'hello.cpp'}];
             
@@ -101,8 +99,6 @@ var filetree = new Vue({
             return getItem(name);
         },
     	initTree(){
-
-
     		//console.log(JSON.parse(localStorage.getItem("folderTree")));
     		this.treeData = JSON.parse(localStorage.getItem("folderTree"));
             //console.log(this.treeData);
@@ -114,7 +110,6 @@ var filetree = new Vue({
                 this.focus = t;
                 editor.setValue(getItem(t),-1);
                 filelabel.focus = t;
-
                 //console.log(this.treeData[0]);
             }
 
@@ -125,26 +120,26 @@ var filetree = new Vue({
     		return localStorage.getItem(str);
     	},
     	createNewFile(){
-    		this.seen = true;
+    		//this.seen = true;
+            this.creating = true;
     	},
+        setFilename(){
+            console.log(this.newfileName);
+            if (this.newfileName != undefined){
+                var data = { text : this.newfileName};
+                this.treeData.push(data);
+                insertItem(this.newfileName,"//init");
+                this.onFileSelected(this.newfileName);
+                this.storage();
+            }
+            else{
+                alert("null filename");
+            }
+            this.creating = false;
+        },
     	storage(){
     		insertItem("folderTree", JSON.stringify(this.treeData));
-    	},
-    	confirmFileName(){
-    		this.seen = false;
-    		var newFile = {text : this.newfileName};
-			this.treeData.push(newFile);
-			//console.log(JSON.stringify(this.treeData));
-			insertItem("folderTree", JSON.stringify(this.treeData));
-			insertItem(this.newfileName, "//start "+ this.newfileName);
-    	},
-    	cancelCreateFile(){
-    		this.seen = false;
-    	},
-        show(event){
-
-            console.log(event)
-        }
+    	}
  	}
 });
    

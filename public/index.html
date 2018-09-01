@@ -26,24 +26,35 @@
 			<div id="file_op">
 				<input type="image" src="./image/newfile.jpg" style="width: 20px; height:20px; margin-left:20px" v-on:click="createNewFile"/>
             </div>
-			
+			<!--
 			<div v-if="seen"> 
+				<label>Please input your file name</label>	
 				<input v-model="newfileName">
 				<button v-on:click="confirmFileName">confirm</button>
 				<button v-on:click="cancelCreateFile">cancel</button>
 			</div>
+			-->
             <div id="file_list">
                 <div v-for="data in treeData">
-                    <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }" v-on:onmousedown="show($event)">
+                    <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }">
                     	<div style="margin:auto auto auto auto;">
-                    		<div>
-	                    		<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
-	                    		{{data['text']}}
-                    		</div>
+                    		
+	                    	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/>
+	                    	{{data['text']}}
+	                    	
+	                    		
+
+                    		
                     	</div>
                     </div>
                 </div>
-                
+
+                <div style="display: flex; margin:auto auto auto auto;" v-if="creating">
+                	<input type="image" src="./image/file.jpg" style="width: 20px; height:20px; "/> 
+                	<input v-model="newfileName" v-on:keyup.enter="setFilename" onFocus="this.value=''">
+                </div>
+                 
+                   
             </div>
             <!--
 			<tree
