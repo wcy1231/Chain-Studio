@@ -3,7 +3,8 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.getSession().setMode("ace/mode/c_cpp");
 
-
+//editor.container.style.background= rgb(15,15,15);
+editor.container.classList.add("myEditor");
 editor.$blockScrolling = Infinity;
 editor.setFontSize(13);
 editor.setOptions({
