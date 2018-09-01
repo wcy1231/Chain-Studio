@@ -1,9 +1,18 @@
-html,body{
-	height:auto;
-    width:auto;
-    margin:0px;
+html {
+
+    margin:0 auto;
+
+    padding:0;
+
+    height: 100%;
+
+}
+body{
     padding: 0px;
     border: 0px;
+    overflow:hidden;
+    margin:0 auto;
+    height:100%;
 }
 #header{
     top:0;
@@ -22,22 +31,23 @@ html,body{
 
 }
 #container{
-    
     width:100%;
     height:100%;
+    position:relative;
+
 }
 
 #ft{
-
-     background: rgb(60,63,65);
-     border-style:solid;
-     border-width: 0px 1px 0px 0px;
-     border-right-color: rgb(40,40,40) ;
-     position: absolute;
-     width:180px;
-     left:0;
-     top: 26px;
-     bottom: 0;
+    background: rgb(60,63,65);
+    border-style:solid;
+    border-width: 0px 1px 0px 0px;
+    border-right-color: rgb(40,40,40) ;
+    position: absolute;
+    overflow: hidden;
+    width:180px;
+    left:0;
+    top: 0;
+    bottom: 0;
 }
 
 #file_op{
@@ -87,7 +97,21 @@ html,body{
     border-style:solid;
     border-width: 1px 0px 0px 0px;
     border-top-color: rgb(60,61,56);
-    height:100%;
+    flex:1;
+    display:flex;
+}
+
+#terminal_text{
+
+    background-color: #000000;
+    caret-color: white;
+    text-shadow: 0px 0px 0px #FFFFFF;
+    -webkit-text-fill-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing:1px;
+    padding:10px 10px 10px 10px;
+    flex :1;
 }
 
 #createNewFile{
@@ -148,13 +172,13 @@ html,body{
     position: absolute;
     width:350px;
     right:0;
-    top:26px;
+    top:0;
     bottom: 0;
     background: rgb(60,63,65);
     border-style:solid;
     border-width: 0px 0px 0px 1px;
     border-left-color: rgb(40,40,40);
-    overflow:auto;
+    overflow:hidden;
     color:#000000;
     display:flex;
     flex-direction: column;
