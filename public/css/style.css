@@ -183,14 +183,9 @@ body{
     background: rgb(33,37,43);
     border-style:solid;
 
-<<<<<<< HEAD
     border-width: 0px 0px 0px 1px;
     border-color: rgb(24,26,31);
     overflow:hidden;
-=======
-    border-width: 0px 0px 0px 2px;
-    border-left-color: rgb(68,68,68);
->>>>>>> 4eff751a3485b88021c378c256bd2eebae7ea84c
 
     color:#000000;
     display:flex;
