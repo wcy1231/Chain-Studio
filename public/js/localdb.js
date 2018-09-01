@@ -28,7 +28,7 @@ var filelabel = new Vue({
                 filetree.focus = name;
                 editor.setValue(getItem(name),-1);
                 this.focus = name;
-                this.changeEditorMode(this.focus);
+                filetree.changeEditorMode(this.focus);
             }
         },
         clickCancel(label,event){
@@ -39,7 +39,7 @@ var filelabel = new Vue({
                 this.focus = '';
                 this.labelList = [];
                 filetree.focus = '';
-                this.changeEditorMode(this.focus);
+                filetree.changeEditorMode(this.focus);
             }
             else{
                 if (label == this.focus){
