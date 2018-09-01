@@ -22,21 +22,26 @@
 		<div id="ft">
 			<div class="header">
         <div style="margin:auto">File</div>
-				<input type="image" src="./image/newfile.jpg" style="width: 20px; height:20px;" v-on:click="createNewFile"/>
+				<input type="image" src="./image/addfile.svg" style="width: 13px; height:13px; position:absolute; right:30px; top:10px;" v-on:click="createNewFile"/>
       </div>
       <div id="file_list">
-          <div v-for="data in treeData">
-              <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }">
-              	<div style="margin:auto auto auto auto;">
-                	<input type="image" src="./image/file_no.svg" style="width: 15px; height:15px;" v-if="data['text']!=focus"/>
-									<input type="image" src="./image/file_chosen.svg" style="width: 15px; height:15px;" v-if="data['text']==focus"/>
-                	{{data['text']}}
-              	</div>
-              </div>
-          </div>
-          <div style="display: flex; margin:auto auto auto auto;" v-if="creating">
-          	<input type="image" src="./image/file_chosen.svg" style="width: 15px; height:15px;"/>
-          	<input v-model="newfileName" v-on:keyup.enter="setFilename" onFocus="this.value=''">
+					<div class="filecoloum">
+	          <div v-for="data in treeData">
+	              <div  v-on:click="onFileSelected(data['text'])" v-bind:class="{ fileSelected: (data['text']==focus),fileUnselected:(data['text']!=focus) }">
+	              	<div style="font-size:12px">
+	                	<input type="image" src="./image/file_no.svg" style="width: 13px; height:13px;" v-if="data['text']!=focus"/>
+										<input type="image" src="./image/file_chosen.svg" style="width: 13px; height:13px;" v-if="data['text']==focus"/>
+	                	{{data['text']}}
+	              	</div>
+	              </div>
+	          </div>
+					</div>
+          <div style="display: flex; text-indent:40px" v-if="creating">
+						<div>
+          		<input type="image" src="./image/file_chosen.svg" style="width: 15px; height:15px;"/>
+          		<input v-model="newfileName" style="width:90px; border-color: rgb(40,44,52);border-style: solid;background-color: rgb(40,44,52);
+							color: rgb(255,255,255);" v-on:keyup.enter="setFilename" onFocus="this.value=''">
+						</div>
           </div>
       </div>
 
@@ -57,7 +62,7 @@
 			</div>
 
 			<div id="terminal">
-				<textarea id="terminal_text">{{text}}</textarea>
+				<textarea id="terminal_text" readonly="readonly">{{text}}</textarea>
 			</div>
 		</div>
 
@@ -66,7 +71,6 @@
 				<button onclick="compile_code()" class="btn half">compile</button>
 		    	<button onclick="deploy_code()" class="btn half">deploy</button>
 		    </div>
-			<button class="authorization btn" onclick="get_identity">授权</button>
 
 			<div id="run_contract">
 				<div class="ops">
