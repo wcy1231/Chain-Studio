@@ -38,7 +38,7 @@ body{
 }
 
 #ft{
-    background: rgb(60,63,65);
+    background: rgb(37,37,38);
     border-style:solid;
     border-width: 0px 1px 0px 0px;
     border-right-color: rgb(40,40,40) ;
@@ -52,10 +52,10 @@ body{
 
 #file_op{
     height: 25px;
-    background: rgb(57,60,62);
+    background: rgb(51,51,51);
     border-style:solid;
     border-width: 0px 0px 1px 0px;
-    border-bottom-color: rgb(36,38,39);
+    border-bottom-color: rgb(68,68,68);
 }
 #file_tree{
     background: #FFFFFF;
@@ -83,9 +83,9 @@ body{
 
 
 #workspace{
-    margin-left: 181px; 
+    margin-left: 181px;
     margin-right:351px;
-    background: rgb(60,63,65); 
+    background: rgb(60,63,65);
     height: 100%;
     display:flex;
     flex-direction: column;
@@ -96,7 +96,7 @@ body{
 #terminal{
     border-style:solid;
     border-width: 1px 0px 0px 0px;
-    border-top-color: rgb(60,61,56);
+    border-top-color: rgb(68,68,68);
     flex:1;
     display:flex;
 }
@@ -126,7 +126,7 @@ body{
 .LabelSelected{
     height:24px;
     min-width:100px;
-    background: rgb(81, 86, 88);
+    background: rgb(30, 30, 30);
     border-style:solid;
     border-width: 0px 0.5px 2px 0.5px;
     border-bottom-color: rgb(67,158,184);
@@ -157,14 +157,14 @@ body{
     font-size: 13px;
 }
 
-#ws_tab    	
+#ws_tab
 {
     color:rgb(134,162,171);
     height:25px;
     border-style:solid;
     border-width: 0px 1px 1px 1px;
-    border-color: rgb(75,75,75);
-	background: rgb(60,62,63);
+    border-color: rgb(68,68,68);
+	background: rgb(51,51,51);
     display:flex;
 }
 
@@ -176,19 +176,15 @@ body{
     bottom: 0;
     background: rgb(30,30,30);
     border-style:solid;
-<<<<<<< HEAD
+
     border-width: 0px 0px 0px 2px;
     border-left-color: rgb(68,68,68);
-    overflow:auto;
-=======
-    border-width: 0px 0px 0px 1px;
-    border-left-color: rgb(40,40,40);
     overflow:hidden;
->>>>>>> ef2bf3dcec1a13c00072c3584fe598822f7f085b
+
     color:#000000;
     display:flex;
     flex-direction: column;
-     
+
 }
 
 .contract_addr{
@@ -200,13 +196,13 @@ body{
     background: rgb(39,40,34);
     padding: 2.5px 5px 2.5px 5px;
     border-radius:5px;
-    
+
 
 }
 
 
 .op_action{
-   border-style:solid; 
+   border-style:solid;
    border-color: white;
    border-radius:2.5px;
    margin: 10px 5px 10px 5px;
@@ -241,7 +237,7 @@ body{
 }
 
 .para_input{
-    
+
     width: 150px;
     border-radius:5px;
 
@@ -250,5 +246,3 @@ body{
 .authorization{
     min-height: 40px;
 }
-
-
