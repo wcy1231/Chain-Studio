@@ -317,7 +317,7 @@ select#chooseChain
 {
 
    width                    : 120px;
-   min-height                   : 20px;
+   min-height                   : 40px;
    vertical-align           : middle;
    border                   : 1px solid rgb(33,37,43);
    -webkit-appearance       : none;
