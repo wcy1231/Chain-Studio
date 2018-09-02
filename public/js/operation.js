@@ -23,7 +23,11 @@ function compile_code()
         success: (data) => {
             console.log(data);
             window.compile_res=data;
-            term.writeln('compile done')
+            if (data.error) {
+              term.writeln('compile error!')
+            } else {
+              term.writeln('compile done')
+            }
         },
         error: function(){
             console.log("communicate fail");
@@ -34,6 +38,10 @@ function compile_code()
 function deploy_code() {
     //console.log(compile_res.abi);
     //console.log(compile_res.wasm);
+    if (compile_res.error) {
+      term.writeln('Error: please compile before deploy')
+      return
+    }
     term.writeln('deploying')
 
     let chain_name= chain.chain_name

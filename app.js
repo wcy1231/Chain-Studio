@@ -56,8 +56,20 @@ app.post('/compile', upload.single('file'), (req, res, next) => {
   	cp.exec(cmdStr, (err1,stdout1,stderr1) => {
   		cmdStr=`eosiocpp -g ${abi_path} ${s_path}`;
   		cp.exec(cmdStr, (err2,stdout2,stderr2) => {
-  			let wasm= fs.readFileSync(wasm_path);
-  			let abi = fs.readFileSync(abi_path,'utf-8');
+        try {
+  			     var wasm= fs.readFileSync(wasm_path);
+  			     var abi = fs.readFileSync(abi_path,'utf-8');
+        } catch (e) {
+          res.json({
+    				'abi':'',
+    				'wasm':'',
+            'chain_name':chain_name,
+            'error':true
+    			})
+          cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
+          return
+        }
+
   			console.log(stderr1);
   			console.log(stdout1);
   			console.log(stderr2);
@@ -70,9 +82,10 @@ app.post('/compile', upload.single('file'), (req, res, next) => {
   			cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
   		});
   	});
+    return
   }
 
-  if (chain_name === 'Nervos') {
+  if (chain_name === 'Nervos'  || chain_name === 'ETH') {
     let s_path = `./tmp/${post_cnt_local}.sol`
   	fs.writeFileSync(s_path,file_content);
 
@@ -92,8 +105,19 @@ app.post('/compile', upload.single('file'), (req, res, next) => {
                 let abi_path = './'+stdout4
                 abi_path=abi_path.substr(0,abi_path.length - 1)
                 console.log(abi_path)
-                let abi = fs.readFileSync(abi_path,'utf-8');
-                let wasm= fs.readFileSync(wasm_path);
+                try {
+                    var abi = fs.readFileSync(abi_path,'utf-8');
+                    var wasm= fs.readFileSync(wasm_path);
+                } catch (e) {
+                  res.json({
+            				'abi':'',
+            				'wasm':'',
+                    'chain_name':chain_name,
+                    'error':true
+            			})
+                  cp.exec(`rm -f ${s_path} ${abi_path} ${wasm_path}`)
+                  return
+                }
 
                 res.json({
                   'abi':abi,
@@ -106,7 +130,14 @@ app.post('/compile', upload.single('file'), (req, res, next) => {
 
       });
     });
+    return
   }
+
+  res.json({
+    'abi':'',
+    'wasm':'',
+    'chain_name':chain_name
+  })
 
 });
 
