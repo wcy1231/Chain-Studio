@@ -40,6 +40,7 @@ var filelabel = new Vue({
                 this.labelList = [];
                 filetree.focus = '';
                 filetree.changeEditorMode(this.focus);
+                editor.setValue("");
             }
             else{
                 if (label == this.focus){
