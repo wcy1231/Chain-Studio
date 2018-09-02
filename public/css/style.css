@@ -317,7 +317,7 @@ select#chooseChain
 {
 
    width                    : 120px;
-   min-height                   : 40px;
+   min-height                   : 30px;
    vertical-align           : middle;
    border                   : 1px solid rgb(33,37,43);
    -webkit-appearance       : none;
@@ -326,7 +326,7 @@ select#chooseChain
    text-align: center;
    text-align-last: center;
 
-   font-size                : 10px;
+   font-size                : 12px;
    cursor                   : pointer;
    outline                  : none;
    background-color:rgb(41,45,52);
