@@ -1,5 +1,4 @@
 var candy = "2074a27ea494ffb23350d9f721133f4f4a2de551";
-var code = getItem("chaincode.go");
 
 
 $.post("https://developers.vnt.link/chaincode/query",

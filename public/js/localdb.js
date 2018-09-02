@@ -77,12 +77,76 @@ var filetree = new Vue({
       	}
  	},
  	created: function () {
-        //localStorage.clear();
         if (localStorage.length == 0 ){
-            var File = [{ text: 'hello.cpp'}];
+            var File = [{ text: 'hello.cpp'},{text:'nervos.sol'}];
 
             insertItem('folderTree', JSON.stringify(File));
-            insertItem('hello.cpp', "#include.....");
+            /*
+var eosDemo = 'using namespace eosio;\
+class hello : public eosio::contract {\
+  public:\
+      using contract::contract;\
+
+      /// @abi action \
+      void hi( account_name user ) {\
+         print( "Hello, ", name{user} );\
+      }\
+};\
+EOSIO_ABI( hello, (hi) )';
+*/
+
+var eos_demo = '#include <eosiolib/eosio.hpp>\r\
+using namespace eosio;\r\
+\r\
+class hello : public eosio::contract {\r\
+  public:\r\
+      using contract::contract;\r\
+\r\
+      /// @abi action \r\
+      void hi( account_name user ) {\r\
+         print( "Hello, ", name{user} );\r\
+      }\r\
+};\r\
+\r\
+EOSIO_ABI( hello, (hi));';
+console.log(eos_demo);
+
+var nervos_demo =
+'pragma solidity 0.4.24;\r\
+\r\
+contract SimpleStore {\r\
+    mapping (address => mapping (uint256 => string)) private records;\r\
+    mapping (address => uint256[]) private categories;\r\
+    \r\
+\r\
+event Recorded(address _sender, string indexed _text, uint256 indexed _time);\r\
+    \r\
+    function _addToList(address from, uint256 time) private {\r\
+        categories[from].push(time);\r\
+    }\r\
+    \r\
+    function getList()\r\
+    public\r\
+    view\r\
+    returns (uint256[])\r\
+    {\r\
+        return categories[msg.sender];\r\
+    }\r\
+    \r\
+    function add(string text, uint256 time) public {\r\
+        records[msg.sender][time]=text;\r\
+        _addToList(msg.sender, time);\r\
+        emit Recorded(msg.sender, text, time);\r\
+    }\r\
+    function get(uint256 time) public view returns(string) {\r\
+        \r\
+        return records[msg.sender][time];\r\
+    }\r\
+}\r\
+';
+
+            insertItem('hello.cpp', eos_demo);
+            insertItem('nervos.sol', nervos_demo);
         }
         this.initTree();
 
@@ -106,6 +170,8 @@ var filetree = new Vue({
     		this.treeData = JSON.parse(localStorage.getItem("folderTree"));
             //console.log(this.treeData);
             //console.log(editor);
+
+
             if (this.treeData.length>0){
                 var t = this.treeData[0].text;
 
@@ -129,6 +195,12 @@ var filetree = new Vue({
     	},
       setFilename(){
           console.log(this.newfileName);
+          for (var i = 0 ; i<this.treeData.length ;i++ ){
+              if (this.newfileName == this.treeData[i].text){
+                 alert("filename conflict");
+                 return
+              }
+          }
           if (this.newfileName != undefined){
               var data = { text : this.newfileName};
               this.treeData.push(data);
