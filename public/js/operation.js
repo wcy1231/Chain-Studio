@@ -156,7 +156,7 @@ new Vue({
 var chain = new Vue({
   el: '#chooseChain',
   data:{
-    chain_list:['EOS','EOSJungle','ENU','Nervos'],
+    chain_list:['EOS','EOSJungle','ENU','Nervos','VNT','ETH'],
     chain_name:''
   },
   created(){
