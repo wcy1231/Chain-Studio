@@ -10,7 +10,7 @@ var term = new Vue({
       var url = t.match(reg);
       console.log(url);
       if (url!=null){
-        textdiv.innerHTML += '<a href="'+t+'">'+t+'</a><br>';
+        textdiv.innerHTML += '<a target="_blank" href="'+t+'">'+t+'</a><br>';
       }
       else{
         textdiv.innerHTML += t + '<br>';
